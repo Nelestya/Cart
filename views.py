@@ -6,6 +6,7 @@ from .forms import CartAddProductForm
 
 # Create your views here.
 
+# BUG IF THE PRODUCT IS DELETED IN DB
 @require_POST
 def cart_add(request, product_id):
     cart = Cart(request)
@@ -30,3 +31,4 @@ def cart_detail(request):
         item['update_quantity_form'] = CartAddProductForm(initial={'quantity': item['quantity'],
                                                                    'update': True})
     return render(request, 'cart/detail.html', {'cart': cart})
+
